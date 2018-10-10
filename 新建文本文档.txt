@@ -1,0 +1,80 @@
+public class two {
+
+	private static int maxNum=10;
+	private static ArrayList<two> list=new ArrayList<>();
+	
+	private two(){
+		
+	}
+	static{
+		for(int i=0;i<maxNum;i++){
+			two tt=new two();
+			list.add(tt);
+		}
+	}
+	public static two getInstant(){
+		Random random=new Random();
+		int i=random.nextInt(maxNum);
+		System.out.println(i);
+		two t=list.get(i);
+		return t;
+	}
+	
+}
+
+
+
+public class one {
+	
+	private static one a; //单例对象
+    //private static one a=new one();//饿汉模式先实例化
+	private static String name;//one对象的属性名
+	
+	private one(){
+		name="cy";//第一次创建对象(用getInstant方法)时给name属性赋值
+	}
+	
+	//初始化块 控制台打印111 由此可知单例创建的次数(1次)
+	{
+		System.out.println(111);
+	}
+	
+	//用于返回a这个单例  如果为空(即a=null)则new(会调用私有构造器)一个one给他
+	public static one getInstant(){
+		if(a==null){
+			a=new one();
+		}
+		return a;
+		//return a;//饿汉模式直接返回实例a
+	}
+	
+	//控制台显示a的name属性值
+	public void showname(){
+		System.out.println(name);
+	}
+	
+	//改变a的name属性值
+	public void changename(String s){
+		a.name=s;
+	}
+	
+}
+
+public static void main(String[] args) {
+		one.getInstant().showname();
+		System.out.println(one.getInstant());
+		one.getInstant().changename("zqq");
+		one.getInstant().showname();
+		System.out.println(one.getInstant());
+	}
+
+public static void main(String[] args) {
+		System.out.println(two.getInstant());
+		System.out.println(two.getInstant());
+		System.out.println(two.getInstant());
+		System.out.println(two.getInstant());
+		System.out.println(two.getInstant());
+		System.out.println(two.getInstant());
+			
+	}
+com.example.demo.day1
